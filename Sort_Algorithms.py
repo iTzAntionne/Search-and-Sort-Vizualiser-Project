@@ -104,15 +104,53 @@ def bubble_sort():
 
 
     
-# def quick_sort(DATA, sorted):
+def partition(data):
+
+    if len(data) <= 1:
+       return data
+
+    pivot_left = []
+    pivot_right = []
+
+    for i in range(len(data)):
+        # for loop, data separation between left and right
+
+        if data[i] < data[-1]:
+           pivot_left.append(data[i])
+
+        if data[i] > data[-1]:
+            pivot_right.append(data[i])
+
+        
+    pivot_left = partition(pivot_left)
+    
+    # recursive calls
+
+    pivot_right = partition(pivot_right)
+
+    # end return 
+    return pivot_left + [data[-1]] + pivot_right
+
+
+
+def quick_sort():
+
+    # initialization of array and data
+    sorted_data = []
+
+    # deep copy of global constant array, use deep copy function
+    sorted_data = deep_copy()
+
+    pivot_trace = partition(sorted_data)
+    
+    print(pivot_trace)
+
     
 # def merge_sort(DATA, sorted):
     
 # def insertion_sort(DATA, sorted):
 
 # def comb_sort(DATA, sorted):
-
-
 
 
 if __name__ == '__main__':
